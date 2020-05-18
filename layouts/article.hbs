@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta name="description" content="This is a description">
+  <meta name="author" content="This is an author">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+
+</head>
+
+<body>
+
+  <!-- Header
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {{> header }}
+  <article class="container">
+    <div class="row">
+      <h2 class="row heading">
+        {{ title }}
+      </h2>
+      <h5 class="row sub-heading">
+        {{ moment date lang="en" format="Do MMMM YYYY" }} | {{#if readingTime}} Approximately a {{ readingTime }}{{/if}}
+      </h5>
+    </div>
+    {{{ contents }}}
+  </article>
+  <!-- Footer
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {{> footer }}
+
+  <!-- End Document
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>
