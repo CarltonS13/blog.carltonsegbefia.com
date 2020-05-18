@@ -3,6 +3,7 @@ title: "Hello World"
 date: 2016-10-12
 collection: articles
 blurb: An introduction to my unamed blog
+tags: test, interactive
 ---
 
 ## Welcome to my Unamed Blog

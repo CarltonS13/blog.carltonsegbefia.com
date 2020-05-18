@@ -31,30 +31,60 @@
 
   <!-- Header
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  {{> header }}
+  <header class="container u-max-full-width ">
+    <div class="row navbar">
+      <div class="two columns u-pull-left site-name">
+        <a href="http://blog.carltonsegbefia.com" >Home</a>
+      </div>
+      <div class="five columns u-pull-right menu">
+        <a href="https://www.carltonsegbefia.com/" >About</a>
+        <a href="mailto:blog@carltonsegbefia.com" >Contact</a>
+      </div>
+    </div>
+  </header>
 
 
-  <!-- Tags
+  <!-- Tag Title
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div  style="max-width: 650px;margin-bottom: 30%;" class="container">
+  <div class="container">
     <div class="row title">
-      <h1>An exploration into the mind of Carlton Segbefia</h1>
-      </div>
-      <div class="row tags">
-        <a href="random" class="tag">#Random</a>
-        <a href="all" class="tag">#Recent</a>
-      </div>
-      <!-- need loop for tags -->
-      <div class="row tags">
-        {{#get_keys tags}}
-        <a href="\tags\{{this}}" class="tag">#{{this}}</a>
-        {{/get_keys}}
-      </div>
+      <h1 class="tag">typography</h1>
+    </div>
   </div>
+
+  <!-- Excerpts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container excerpts">
+    <div class="row">
+      <div class="row">
+        <h4 class="row">
+        <a><strong>Geometric Font + Palindrome</strong></a>
+        </h4>
+        <span class="row sub-heading">
+        <em>9th May 2020 |  Approximately a 15 min read</em>
+        </span>
+      </div>
+      <div class="row text">
+        <p></p>
+        <a><span>Continue Reading...</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  
 
 <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-{{> footer }}
+<footer class="container  u-max-full-width ">
+  <div class="row footer">
+    <p>
+      This is a blog by Carlton Segbefia | Copyright © 2020 All rights reserved
+    </p>
+  </div>
+</footer>
 
 <!-- End Document
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->

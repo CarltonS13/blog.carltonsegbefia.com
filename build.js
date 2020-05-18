@@ -6,15 +6,25 @@ var readingTime = require('metalsmith-reading-time');
 var collections = require('metalsmith-collections');
 var discoverPartials = require('metalsmith-discover-partials');
 var permalinks = require('metalsmith-permalinks');
+var tags = require('./lib/tags');
 
-// metalsmith-pagination
-// metalsmith-collections
-// metalsmith-tags
 // metalsmith-feed
 // metalsmith-mapsite
-// metalsmith-permalinks
+// need a plugin to automatically generate excerpts for tag pages
 
 handlebars.registerHelper('moment', require('helper-moment'));
+
+// takes a dict and iterates though its keys for the handlebar template
+// based on https://stackoverflow.com/questions/11924452
+handlebars.registerHelper('get_keys', function(dict, block) {
+  var accum = '';
+  Object.keys(dict).forEach(function(key) {
+    if(key != ''){
+      accum += block.fn(key);
+    }
+  });
+  return accum;
+  });
 
 metalsmith(__dirname, )
 .clean(true)
@@ -50,6 +60,20 @@ metalsmith(__dirname, )
       reverse: true
     }
   }))
+  .use(tags({
+    handle: 'tags',
+    path: 'tags/:tag/index.html',
+    pathPage: 'tags/:tag/:num/index.html',
+    perPage: 25,
+    layout: './tag.hbs',
+    sortBy: 'date',
+    reverse: true
+  }))
+  .use(function(files, metalsmith, done) {
+  tagList = metalsmith.metadata().tags;
+  console.log(Object.keys(tagList));
+  done();
+    })
   .use(discoverPartials({
     directory: './layouts/partials',
     pattern: /\.html$/
