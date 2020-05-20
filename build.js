@@ -6,11 +6,15 @@ var readingTime = require('metalsmith-reading-time');
 var collections = require('metalsmith-collections');
 var discoverPartials = require('metalsmith-discover-partials');
 var permalinks = require('metalsmith-permalinks');
+var excerpts = require('metalsmith-excerpts');
 var tags = require('./lib/tags');
 
 // metalsmith-feed
 // metalsmith-mapsite
 // need a plugin to automatically generate excerpts for tag pages
+// need most recent article in index
+// need a handlebar helper to randomly pick an article
+// need a handlebar helper to capitalize first letter for tags
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -19,15 +23,15 @@ handlebars.registerHelper('moment', require('helper-moment'));
 handlebars.registerHelper('get_keys', function(dict, block) {
   var accum = '';
   Object.keys(dict).forEach(function(key) {
-    if(key != ''){
+    if (key != '') {
       accum += block.fn(key);
     }
   });
   return accum;
-  });
+});
 
 metalsmith(__dirname, )
-.clean(true)
+  .clean(true)
   .metadata({
     site: {
       name: 'unamed-blog',
@@ -51,9 +55,8 @@ metalsmith(__dirname, )
     relative: false,
     pattern: ':title',
   }))
-  .use(readingTime({
-    // options here
-  }))
+  .use(readingTime({}))
+  .use(excerpts())
   .use(collections({
     articles: {
       sortBy: 'date',
@@ -69,11 +72,11 @@ metalsmith(__dirname, )
     sortBy: 'date',
     reverse: true
   }))
-  .use(function(files, metalsmith, done) {
-  tagList = metalsmith.metadata().tags;
-  console.log(Object.keys(tagList));
-  done();
-    })
+  // .use(function(files, metalsmith, done) {
+  //   tagList = metalsmith.metadata().tags;
+  //   console.log(tagList);
+  //   done();
+  // })
   .use(discoverPartials({
     directory: './layouts/partials',
     pattern: /\.html$/
