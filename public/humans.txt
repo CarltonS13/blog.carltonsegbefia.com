@@ -1,0 +1,12 @@
+/* TEAM */
+Your title: Carlton Segbefia
+Site: me@blog.carltonsegbefia.com
+Location: Grinnell, Iowa, US
+
+/* THANKS */
+Nke Opoku
+Diana Chege
+
+/* SITE */
+Standards: HTML5, CSS3, etc.
+Components: Metalsmith

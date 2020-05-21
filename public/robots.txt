@@ -1,0 +1,4 @@
+{content_type type='text/plain'}
+User-agent: *
+
+Sitemap: {root_url}/sitemap.xml
