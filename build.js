@@ -7,14 +7,18 @@ var collections = require('metalsmith-collections');
 var discoverPartials = require('metalsmith-discover-partials');
 var permalinks = require('metalsmith-permalinks');
 var excerpts = require('metalsmith-excerpts');
+const feed = require('metalsmith-feed');
+var sitemap = require('metalsmith-mapsite');
+
 var tags = require('./lib/tags');
 
-// metalsmith-feed
-// metalsmith-mapsite
-// need a plugin to automatically generate excerpts for tag pages
-// need most recent article in index
+// set up a collections page for all articles sorted by date to be used
+//  by recent tag in home
 // need a handlebar helper to randomly pick an article
 // need a handlebar helper to capitalize first letter for tags
+// add google analytics
+// add disqus
+// fix template metas
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -35,7 +39,8 @@ metalsmith(__dirname, )
   .metadata({
     site: {
       name: 'unamed-blog',
-      description: "A blog to explore what's in his head"
+      description: "A blog to explore what's in his head",
+      url: 'https://blog.carltonsegbefia.com',
     }
   })
   .source('./src')
@@ -87,6 +92,8 @@ metalsmith(__dirname, )
     pattern: ["*/*/*html", "*/*html", "*html", "**/*.html"],
     default: 'article.hbs',
   }))
+  .use(feed({collection: 'articles'}))
+  .use(sitemap('https://blog.carltonsegbefia.com'))
   .build(function(err) {
     if (err) {
       console.log(err);
