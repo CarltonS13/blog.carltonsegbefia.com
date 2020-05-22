@@ -14,14 +14,16 @@ var serve = require('metalsmith-serve');
 
 var tags = require('./lib/tags');
 
-// set up a collections page for all articles sorted by date to be used
+// set up a collections page for all posts sorted by date to be used
 //  by recent tag in home
-// need a handlebar helper to randomly pick an article
+//  as well as adding a next and previous arrow to each post
+// need a handlebar helper to randomly pick an post
 // need a handlebar helper to capitalize first letter for tags
 // add google analytics
 // add disqus
 // find way to upload blog to html
-
+// metalsmith-multi-language
+// metalsmith-drafts 
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -66,7 +68,7 @@ metalsmith(__dirname, )
   .use(readingTime({}))
   .use(excerpts())
   .use(collections({
-    articles: {
+    posts: {
       sortBy: 'date',
       reverse: true
     }
@@ -93,9 +95,9 @@ metalsmith(__dirname, )
     engine: 'handlebars',
     directory: './layouts',
     pattern: ["*/*/*html", "*/*html", "*html", "**/*.html"],
-    default: 'article.hbs',
+    default: 'post.hbs',
   }))
-  .use(feed({collection: 'articles'}))
+  .use(feed({collection: 'posts'}))
   .use(sitemap('https://blog.carltonsegbefia.com'))
   .use(serve({
   port: 8081,
