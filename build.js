@@ -9,6 +9,8 @@ var permalinks = require('metalsmith-permalinks');
 var excerpts = require('metalsmith-excerpts');
 const feed = require('metalsmith-feed');
 var sitemap = require('metalsmith-mapsite');
+var watch = require('metalsmith-watch');
+var serve = require('metalsmith-serve');
 
 var tags = require('./lib/tags');
 
@@ -18,7 +20,8 @@ var tags = require('./lib/tags');
 // need a handlebar helper to capitalize first letter for tags
 // add google analytics
 // add disqus
-// fix template metas
+// find way to upload blog to html
+
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -94,6 +97,16 @@ metalsmith(__dirname, )
   }))
   .use(feed({collection: 'articles'}))
   .use(sitemap('https://blog.carltonsegbefia.com'))
+  .use(serve({
+  port: 8081,
+  verbose: true
+  }))
+  .use(watch({
+    paths: {
+      "${source}/**/*": true,
+      "layouts/**/*": "**/*",
+    }
+  }))
   .build(function(err) {
     if (err) {
       console.log(err);

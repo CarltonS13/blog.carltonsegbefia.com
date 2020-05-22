@@ -45,7 +45,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
 
-  <base href="https://www.blog.carltonsegbefia.com" />
+  <!-- <base href="https://www.blog.carltonsegbefia.com" /> -->
 
 </head>
 
@@ -71,15 +71,15 @@
       <div class="row">
         <div class="row">
           <h4 class="row">
-            <a><strong>{{title}}</strong></a>
+            <a style="text-decoration:none;" href="/{{path}}"><strong>{{title}}</strong></a>
           </h4>
           <span class="row sub-heading">
-            <em>{{ moment date lang="en" format="Do MMMM YYYY" }} | {{#if readingTime}} Approximately a {{ readingTime }}{{/if}}</em>
+            <em>{{ moment date lang="en" format="Do MMMM YYYY" }} | {{#if readingTime}} About a {{ readingTime }}{{/if}}</em>
           </span>
         </div>
         <div class="row text">
           {{{excerpt}}}
-          <a href="./{{path}}"><span>Continue Reading...</span></a>
+          <a href="/{{path}}"><span>Continue Reading...</span></a>
         </div>
       </div>
     {{/each}}

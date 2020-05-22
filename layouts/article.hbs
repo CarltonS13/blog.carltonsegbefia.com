@@ -43,7 +43,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
 
-  <base href="https://www.blog.carltonsegbefia.com" />
+  <!-- <base href="https://www.blog.carltonsegbefia.com" /> -->
 
 
 </head>
@@ -63,7 +63,17 @@
       </h5>
     </div>
     {{{ contents }}}
+
+    <div class="row tags">
+      <span>Tags:</span>
+      {{#each tags}}
+      <a href="/tags/{{this.name}}" class="tag">{{this.name}}</a>
+      {{/each}}
+    </div>
   </article>
+
+
+
   <!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {{> footer }}

@@ -1,4 +1,3 @@
-{content_type type='text/plain'}
+Sitemap: https://blog.carltonsegbefia.com/sitemap.xml
 User-agent: *
-
-Sitemap: {root_url}/sitemap.xml
+Disallow:
