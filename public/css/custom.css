@@ -16,6 +16,7 @@ img {
   padding: 0 1.8rem;
   text-decoration: none;
   border: thin solid;
+  text-transform: capitalize;
   /* line-height: 38px; */
 }
 
