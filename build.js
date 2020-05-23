@@ -23,7 +23,7 @@ var tags = require('./lib/tags');
 // add disqus
 // find way to upload blog to html
 // metalsmith-multi-language
-// metalsmith-drafts 
+// metalsmith-drafts
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -61,18 +61,6 @@ metalsmith(__dirname, )
     smartypants: false,
     xhtml: false
   }))
-  .use(permalinks({
-    relative: false,
-    pattern: ':title',
-  }))
-  .use(readingTime({}))
-  .use(excerpts())
-  .use(collections({
-    posts: {
-      sortBy: 'date',
-      reverse: true
-    }
-  }))
   .use(tags({
     handle: 'tags',
     path: 'tags/:tag/index.html',
@@ -82,10 +70,23 @@ metalsmith(__dirname, )
     sortBy: 'date',
     reverse: true
   }))
+  .use(collections({
+    posts: {
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
+  .use(readingTime({}))
+  .use(excerpts())
+  .use(permalinks({
+    relative: false,
+    pattern: ':title'
+  }))
   // .use(function(files, metalsmith, done) {
-  //   tagList = metalsmith.metadata().tags;
-  //   console.log(tagList);
-  //   done();
+    // tagList = metalsmith.metadata().tags;
+    // postList = metalsmith.metadata().posts;
+    // console.log(postList[0]);
+    // done();
   // })
   .use(discoverPartials({
     directory: './layouts/partials',

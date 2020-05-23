@@ -1,7 +1,7 @@
 ---
 title: "Hello World"
 date: 2016-10-12
-collection: articles
+collection: posts
 blurb: An introduction to my unamed blog
 tags: test, interactive
 ---

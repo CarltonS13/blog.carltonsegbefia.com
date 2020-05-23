@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{tag}}Random Post|Carlton Segbefia's Blog</title>
+  <meta name="description" content="This page redirects you to a random post on my blog {{tag}}">
+  <meta name="author" content="Carlton Segbefia">
+
+  <!-- Other SEO tags
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="author" href="https://blog.carltonsegbefia.com/humans.txt" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<script type="text/javascript">
+// the used links
+var links = [ {{#each posts}}
+"{{path}}",
+{{/each}} ];
+
+function goToRandom() {
+    // get a random number between 0 and the number of links
+    var randIdx = Math.random() * links.length;
+    // round it, so it can be used as array index
+    randIdx = parseInt(randIdx, 10);
+    // construct the link to be opened
+    var link = '/' + links[randIdx];
+    // open it in a new window / tab (depends on browser setting)
+    window.location.replace(link) ;
+};
+</script>
+
+<body onLoad="goToRandom()">
+  <!-- End Document
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>

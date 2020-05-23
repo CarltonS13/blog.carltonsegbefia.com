@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <title>{{ title }}</title>
   <meta name="description" content="{{blurb}}">
-  <meta name="author" content="This is an author">
+  <meta name="author" content="Carlton Segbefia">
 
   <!-- Other SEO tags
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -53,6 +53,9 @@
   <!-- Header
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   {{> header }}
+
+  <!-- Body
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <article class="container">
     <div class="row">
       <h2 class="row heading">
@@ -67,11 +70,29 @@
     <div class="row tags">
       <span>Tags:</span>
       {{#each tags}}
-      <a href="/tags/{{this.name}}" class="tag">{{this.name}}</a>
+        <a href="/tags/{{this.name}}" class="tag">{{this.name}}</a>
       {{/each}}
     </div>
   </article>
 
+  <!-- Next and Previous Links
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="four columns">
+        {{#if previous }}
+          <a href="/{{previous.path}}">Previous: {{previous.title}}</a>
+        {{/if}}
+      </div>
+
+      <div class="four columns">
+        {{#if next }}
+          <a href="/{{next.path}}">Next: {{next.title}}</a>
+        {{/if}}
+      </div>
+
+    </div>
+  </div>
 
 
   <!-- Footer
