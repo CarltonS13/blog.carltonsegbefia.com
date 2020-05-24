@@ -6,9 +6,10 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Home|Carlton Segbefia's Blog</title>
-  <meta name="description" content="A blog by Carlton Segbefia exploring topics like, Technology, Afrofuturism, Design and Fiction">
+  <title>Posts {{pagination.num}}|Carlton Segbefia's Blog</title>
+  <meta name="description" content="This is an index of articles by Carlton Segbefia around Posts {{pagination.num}}">
   <meta name="author" content="Carlton Segbefia">
+
 
   <!-- Other SEO tags
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -16,17 +17,18 @@
 
   <meta name="og:type" content="website" />
 
-  <meta name="og:title" content="Home|Carlton Segbefia's Blog" />
+  <meta name="og:title" content="Posts {{pagination.num}}|Carlton Segbefia's Blog" />
 
-  <meta name="og:description" content="A blog by Carlton Segbefia exploring topics like, Technology, Afrofuturism, Design and Fiction" />
+  <meta name="og:description" content="This is an index of articles by Carlton Segbefia around Posts {{pagination.num}}" />
 
   <meta name="twitter:card" content="summary" />
 
-  <meta name="twitter:title" content="Home|Carlton Segbefia's Blog" />
+  <meta name="twitter:title" content="Posts {{pagination.num}}|Carlton Segbefia's Blog" />
 
-  <meta name="twitter:description" content="A blog by Carlton Segbefia exploring topics like, Technology, Afrofuturism, Design and Fiction" />
+  <meta name="twitter:description" content="This is an index of articles by Carlton Segbefia around Posts {{pagination.num}}" />
 
   <meta name="next-head-count" content="10" />
+
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -34,9 +36,9 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/custom.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
 
 
   <!-- Favicon
@@ -45,56 +47,54 @@
 
   <!-- <base href="https://www.blog.carltonsegbefia.com" /> -->
 
-
-
 </head>
 
 <body>
 
   <!-- Header
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <header class="container u-max-full-width ">
-    <div class="row navbar">
-      <div class="two columns u-pull-left site-name">
-        <a href="/" >Home</a>
-      </div>
-      <div class="five columns u-pull-right menu">
-        <a href="https://www.carltonsegbefia.com/" >About</a>
-        <a href="mailto:blog@carltonsegbefia.com" >Contact</a>
-      </div>
-    </div>
-  </header>
+  {{> header }}
 
 
-  <!-- Tags
+  <!-- Tag Title
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div  style="max-width: 650px;margin-bottom: 30%;" class="container">
+  <div class="container">
     <div class="row title">
-      <h1>An exploration into the mind of Carlton Segbefia</h1>
-      </div>
-      <div class="row tags">
-        <a href="random" class="tag">#Random</a>
-        <a href="posts" class="tag">#Recent</a>
-      </div>
-      <!-- need loop for tags -->
-      <div class="row tags">
-        <a href="tags/interactive" class="tag">#interactive</a>
-        <a href="tags/typography" class="tag">#typography</a>
-        <a href="tags/test" class="tag">#test</a>
-      </div>
+      <h1 class="tag">Posts {{pagination.num}}</h1>
+    </div>
   </div>
 
-<!-- Footer
+  <!-- Excerpts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<footer class="container  u-max-full-width ">
-  <div class="row footer">
-    <p>
-      This is a blog by Carlton Segbefia | Copyright © 2020 All rights reserved
-    </p>
+  <div class="container excerpts">
+    {{#each pagination.files}}
+      <div class="row">
+        <div class="row">
+          <h4 class="row">
+            <a style="text-decoration:none;" href="/{{path}}"><strong>{{title}}</strong></a>
+          </h4>
+          <span class="row sub-heading">
+            <em>{{ moment date lang="en" format="Do MMMM YYYY" }} | {{#if readingTime}} About a {{ readingTime }}{{/if}}</em>
+          </span>
+        </div>
+        <div class="row text">
+          {{{excerpt}}}
+          <a href="/{{path}}"><span>Continue Reading...</span></a>
+        </div>
+      </div>
+    {{/each}}
   </div>
-</footer>
 
-<!-- End Document
+  <!-- Pagination
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {{#if pagination.previous}}<a href="{{pagination.previous.path}}">Previous</a>{{/if}}
+  {{#if pagination.next}}<a href="{{pagination.next.path}}">Next</a>{{/if}}
+
+  <!-- Footer
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  {{> footer }}
+
+  <!-- End Document
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 

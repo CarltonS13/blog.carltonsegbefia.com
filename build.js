@@ -11,19 +11,15 @@ const feed = require('metalsmith-feed');
 var sitemap = require('metalsmith-mapsite');
 var watch = require('metalsmith-watch');
 var serve = require('metalsmith-serve');
+var pagination = require('metalsmith-pagination')
 
 var tags = require('./lib/tags');
 
-// set up a collections page for all posts sorted by date to be used
-//  by recent tag in home
-//  as well as adding a next and previous arrow to each post
-// need a handlebar helper to randomly pick an post
-// need a handlebar helper to capitalize first letter for tags
-// add google analytics
+//  as well as adding a next and previous arrow to each post: done
+//    need to make it pretty
 // add disqus
 // find way to upload blog to html
 // metalsmith-multi-language
-// metalsmith-drafts
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
@@ -76,6 +72,14 @@ metalsmith(__dirname, )
       reverse: true
     }
   }))
+  .use(pagination({
+    'collections.posts': {
+      perPage: 25,
+      layout: 'posts.hbs',
+      first: 'posts.html',
+      path: 'posts/:num.html'
+    }
+  }))
   .use(readingTime({}))
   .use(excerpts())
   .use(permalinks({
@@ -83,10 +87,10 @@ metalsmith(__dirname, )
     pattern: ':title'
   }))
   // .use(function(files, metalsmith, done) {
-    // tagList = metalsmith.metadata().tags;
-    // postList = metalsmith.metadata().posts;
-    // console.log(postList[0]);
-    // done();
+  // tagList = metalsmith.metadata().tags;
+  // postList = metalsmith.metadata().posts;
+  // console.log(postList[0]);
+  // done();
   // })
   .use(discoverPartials({
     directory: './layouts/partials',
@@ -98,11 +102,13 @@ metalsmith(__dirname, )
     pattern: ["*/*/*html", "*/*html", "*html", "**/*.html"],
     default: 'post.hbs',
   }))
-  .use(feed({collection: 'posts'}))
+  .use(feed({
+    collection: 'posts'
+  }))
   .use(sitemap('https://blog.carltonsegbefia.com'))
   .use(serve({
-  port: 8081,
-  verbose: true
+    port: 8081,
+    verbose: true
   }))
   .use(watch({
     paths: {
