@@ -81,13 +81,13 @@
     <div class="row">
       <div class="four columns">
         {{#if previous }}
-          <a href="/{{previous.path}}">Previous: {{previous.title}}</a>
+          <a class="previous"  href="/{{previous.path}}">Previous: {{previous.title}}</a>
         {{/if}}
       </div>
 
-      <div class="four columns">
+      <div class="four columns {{#unless previous }} offset-by-eight {{/unless}}">
         {{#if next }}
-          <a href="/{{next.path}}">Next: {{next.title}}</a>
+          <a class="next"  href="/{{next.path}}">Next: {{next.title}}</a>
         {{/if}}
       </div>
 

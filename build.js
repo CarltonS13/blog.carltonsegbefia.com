@@ -15,8 +15,6 @@ var pagination = require('metalsmith-pagination')
 
 var tags = require('./lib/tags');
 
-//  as well as adding a next and previous arrow to each post: done
-//    need to make it pretty
 // add disqus
 // find way to upload blog to html
 // metalsmith-multi-language

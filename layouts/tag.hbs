@@ -87,8 +87,8 @@
 
   <!-- Pagination
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  {{#if pagination.previous}}<a href="{{pagination.previous.path}}">Previous</a>{{/if}}
-  {{#if pagination.next}}<a href="{{pagination.next.path}}">Next</a>{{/if}}
+  {{#if pagination.previous}}<a class="previous"  href="{{pagination.previous.path}}">Previous</a>{{/if}}
+  {{#if pagination.next}}<a  class="next {{#unless pagination.previous }} offset-by-eight {{/unless}}" href="{{pagination.next.path}}">Next</a>{{/if}}
 
   <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
