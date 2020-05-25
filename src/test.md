@@ -4,6 +4,7 @@ date: 2016-10-12
 collection: posts
 blurb: An introduction to my unamed blog
 tags: test, interactive
+draft: true
 ---
 
 ## Welcome to my Unamed Blog

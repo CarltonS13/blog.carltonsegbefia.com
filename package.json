@@ -12,6 +12,7 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
     "gulp4-run-sequence": "^1.0.1",
     "handlebars": "^4.7.6",
     "helper-moment": "^0.2.0",
@@ -33,7 +34,8 @@
     "metalsmith-redirect": "^3.0.3",
     "metalsmith-serve": "0.0.7",
     "metalsmith-watch": "^1.0.3",
-    "slug": "^2.1.1"
+    "slug": "^2.1.1",
+    "vinyl-ftp": "^0.6.1"
   },
   "browserslist": [
     "> 1%",

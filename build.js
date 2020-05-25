@@ -1,4 +1,5 @@
 var metalsmith = require('metalsmith');
+var drafts = require('metalsmith-drafts');
 var markdown = require('metalsmith-markdown');
 var layouts = require('metalsmith-layouts');
 var handlebars = require('handlebars');
@@ -45,6 +46,7 @@ metalsmith(__dirname, )
   .source('./src')
   .destination('./public')
   .ignore(['*/src', 'src'])
+  .use(drafts())
   .use(markdown({
     pedantic: false,
     gfm: true,
@@ -104,16 +106,16 @@ metalsmith(__dirname, )
     collection: 'posts'
   }))
   .use(sitemap('https://blog.carltonsegbefia.com'))
-  .use(serve({
-    port: 8081,
-    verbose: true
-  }))
-  .use(watch({
-    paths: {
-      "${source}/**/*": true,
-      "layouts/**/*": "**/*",
-    }
-  }))
+  // .use(serve({
+  //   port: 8081,
+  //   verbose: true
+  // }))
+  // .use(watch({
+  //   paths: {
+  //     "${source}/**/*": true,
+  //     "layouts/**/*": "**/*",
+  //   }
+  // }))
   .build(function(err) {
     if (err) {
       console.log(err);
