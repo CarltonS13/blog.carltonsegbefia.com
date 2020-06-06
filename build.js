@@ -17,7 +17,6 @@ var pagination = require('metalsmith-pagination')
 var tags = require('./lib/tags');
 
 // add disqus
-// find way to upload blog to html
 // metalsmith-multi-language
 
 handlebars.registerHelper('moment', require('helper-moment'));
