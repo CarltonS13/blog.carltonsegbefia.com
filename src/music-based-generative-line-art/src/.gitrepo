@@ -4,8 +4,9 @@
 ; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
 ;
 [subrepo]
-	remote = none
+	remote = https://carltons13@github.com/CarltonS13/Golden-Lines.git
 	branch = master
-	commit = 
+	commit = d37df2e4916647cdb33a2755e80ed5b2855e6711
 	method = merge
 	cmdver = 0.4.1
+	parent = 26e021e9ec1c397607aaf69bcac722d88f4ecfe8
