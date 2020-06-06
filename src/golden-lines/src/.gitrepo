@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://carltons13@github.com/CarltonS13/Golden-Lines.git
 	branch = master
-	commit = d37df2e4916647cdb33a2755e80ed5b2855e6711
+	commit = 28df84b286e1d796adad2064d7bfae954eabfd46
 	method = merge
 	cmdver = 0.4.1
-	parent = 6a7ddea580e7d9d670c63d6b78ccccdc34ddab36
+	parent = 3f1b6372e68e91066e65d5eab354b75af17a18b5
